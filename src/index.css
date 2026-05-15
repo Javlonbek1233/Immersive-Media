@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,900;1,400&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+:root {
+  --color-bg: #07070a;
+  --color-accent: #e0e0ff;
+  --color-glow: #b19cd9;
+  --glass-surface: rgba(20, 20, 30, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background-color: var(--color-bg);
+  color: #fff;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Atmospheric viewport—layered gradients */
+.viewport {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: 
+    radial-gradient(circle at 80% 20%, #1a1a2e 0%, transparent 50%),
+    radial-gradient(circle at 20% 80%, #0d0221 0%, transparent 50%);
+}
+
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Main glass container */
+.main-container {
+  width: min(900px, 95vw);
+  height: min(600px, 90vh);
+  display: flex;
+  background: var(--glass-surface);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 10;
+}
+
+.sidebar {
+  width: 320px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-right: 1px solid var(--glass-border);
+}
+
+.content-area {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.4));
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Stats Styling */
+.stats-grid {
+  display: grid;
+  gap: 20px;
+  margin-top: 32px;
+}
+
+.stat-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+}
+
+.stat-bar-bg {
+  width: 100%;
+  height: 2px;
+  background: rgba(255,255,255,0.1);
+  position: relative;
+}
+
+.stat-bar-fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: var(--color-glow);
+  box-shadow: 0 0 10px var(--color-glow);
+}
+
+/* Character Info Stylings */
+.character-name {
+  font-family: var(--font-serif);
+  font-size: 48px;
+  font-weight: 400;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  color: var(--color-accent);
+  text-shadow: 0 0 20px rgba(177, 156, 217, 0.4);
+}
+
+.character-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 12px;
+}
+
+/* Action row */
+.action-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+}
+
+.btn-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: rgba(255,255,255,0.8);
+}
+
+.btn-circle:hover {
+  background: var(--color-glow);
+  border-color: var(--color-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px var(--color-glow);
+  color: #fff;
+}
+
+/* Vertical hint */
+.nav-hint {
+  position: absolute;
+  bottom: 40px;
+  right: 40px;
+  font-size: 11px;
+  opacity: 0.3;
+  letter-spacing: 0.2em;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  z-index: 20;
+}

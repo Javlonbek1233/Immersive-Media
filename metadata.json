@@ -1,0 +1,6 @@
+{
+  "name": "Moonlit Sakura",
+  "description": "An immersive, cinematic visualization of a silver-haired anime girl under cherry blossoms at night.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
